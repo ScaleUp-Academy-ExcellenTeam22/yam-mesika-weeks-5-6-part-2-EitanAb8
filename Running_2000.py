@@ -1,4 +1,4 @@
-import time
+import timeit
 
 
 def timer(f, *args, **kwargs):
@@ -9,9 +9,7 @@ def timer(f, *args, **kwargs):
     :param kwargs: Keyword Arguments.
     :return: The execution time of the given function.
     """
-    start_time = time.time()
-    map(f, (args, kwargs))
-    return start_time - time.time()
+    return timeit.Timer(lambda: map(f, args, kwargs)).timeit()
 
 
 def main():
